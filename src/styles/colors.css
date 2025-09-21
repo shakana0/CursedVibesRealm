@@ -1,0 +1,11 @@
+@layer utilities {
+  .bg-obsidian {
+    background-color: black;
+  }
+  .text-blood {
+    color: #7f1d1d;
+  }
+  .text-mist {
+    color: #d1d5db;
+  }
+}

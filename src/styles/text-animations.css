@@ -1,0 +1,143 @@
+/* Melt */
+@keyframes melt {
+  0% {
+    transform: translateY(0);
+    filter: blur(1.5px);
+  }
+  50% {
+    filter: blur(2px);
+  }
+  100% {
+    filter: blur(4px);
+  }
+}
+
+/* Glow Pulse */
+@keyframes glowPulse {
+  0%,
+  100% {
+    text-shadow: 0 0 12px rgba(255, 0, 0, 0.7), 0 0 24px rgba(255, 0, 0, 0.5),
+      0 0 36px rgba(255, 0, 0, 0.3);
+  }
+  50% {
+    text-shadow: 0 0 24px rgba(255, 0, 0, 0.9), 0 0 48px rgba(255, 0, 0, 0.7),
+      0 0 72px rgba(255, 0, 0, 0.5);
+  }
+}
+
+/* Glitch Shift */
+@keyframes glitchShift {
+  0% {
+    transform: skew(0deg);
+  }
+  25% {
+    transform: skew(-1deg);
+  }
+  50% {
+    transform: skew(1deg);
+  }
+  75% {
+    transform: skew(-0.5deg);
+  }
+  100% {
+    transform: skew(0deg);
+  }
+}
+
+/* Drip */
+@keyframes drip {
+  0% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+  50% {
+    transform: translateY(10px);
+    opacity: 0.6;
+  }
+  100% {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+}
+
+/* Glitch */
+@keyframes glitch {
+  0% {
+    transform: translate(0);
+    opacity: 1;
+  }
+  20% {
+    transform: translate(-2px, 2px);
+    opacity: 0.8;
+  }
+  40% {
+    transform: translate(2px, -2px);
+    opacity: 0.6;
+  }
+  60% {
+    transform: translate(-1px, 1px);
+    opacity: 0.9;
+  }
+  80% {
+    transform: translate(1px, -1px);
+    opacity: 0.7;
+  }
+  100% {
+    transform: translate(0);
+    opacity: 1;
+  }
+}
+
+/* Text styling */
+.cursed-text {
+  position: relative;
+  font-family: "Cinzel", serif;
+  color: #ff0000;
+  opacity: 0.85;
+}
+
+.blurred {
+  filter: blur(1px);
+}
+
+/* Glitch */
+.glitch {
+  animation: glitch 0.3s infinite;
+}
+
+/* Drip (simple pulse drop) */
+.variant-drip::after {
+  content: "";
+  position: absolute;
+  bottom: -5px;
+  left: 50%;
+  width: 4px;
+  height: 10px;
+  background: #8b0000;
+  border-radius: 50%;
+  animation: drip 2s infinite ease-in-out;
+}
+
+/* Variants */
+.variant-glow {
+  animation: glowPulse infinite ease-in-out;
+  will-change: text-shadow;
+}
+.variant-glitch {
+  animation: glitchShift infinite linear;
+}
+
+.variant-melt {
+  animation: melt 5s infinite ease-in-out;
+}
+
+/* Intensity variants */
+.intensity-low {
+  opacity: 0.6;
+}
+.intensity-medium {
+  opacity: 0.8;
+}
+.intensity-high {
+  opacity: 1;
+}

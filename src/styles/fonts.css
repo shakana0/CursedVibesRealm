@@ -1,0 +1,19 @@
+@layer base {
+  h1 {
+    font-family: var(--font-display);
+  }
+
+  h3 {
+    font-family: var(--font-code);
+  }
+}
+
+@layer utilities {
+  .font-display {
+    font-family: var(--font-display);
+  }
+
+  .font-code {
+    font-family: var(--font-code);
+  }
+}
