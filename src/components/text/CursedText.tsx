@@ -10,6 +10,7 @@ interface CursedTextProps {
   pulseSpeed?: number;
   cursedText?: boolean;
   className?: string;
+  onClick?: () => void;
 }
 
 export default function CursedText({
