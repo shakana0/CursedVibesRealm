@@ -1,11 +1,12 @@
 import CursedText from "../text/CursedText";
 import { motion } from "framer-motion";
 
-export default function MainUI({
-  showEntryPrompt,
-}: {
+interface MainUIProps {
   showEntryPrompt: boolean;
-}) {
+  onEnterStory: () => void;
+}
+
+export default function MainUI({ showEntryPrompt, onEnterStory }: MainUIProps) {
   return (
     <section className="min-h-[80vh] w-full max-w-6xl mx-auto flex flex-col justify-between items-center text-center animate-fade">
       <CursedText
@@ -45,6 +46,7 @@ export default function MainUI({
           pulseSpeed={0.9}
           cursedText={true}
           className="text-xl md:text-2xl lg:text-3xl xl:text-4xl cursor-crosshair"
+          onClick={() => onEnterStory()}
         />
       </motion.div>
     </section>
