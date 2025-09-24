@@ -15,5 +15,25 @@ export interface SceneProps {
 }
 
 export type PlayerStats = {
-    [key: string]: number | string;
+    health: number;
+    curseLevel: number;
+    status: string;
+    trust: {
+        [characterId: string]: number;
+    };
+    emotionalState: string;
+    desireLevel: number;
+    corruption: number;
+    chatTone: string;
+};
+
+export type CharacterStats = {
+    strength: number;
+    agility: number;
+    intelligence: number;
+    luck: number;
+};
+
+export type StatImpact = Partial<Omit<PlayerStats, "trust">> & {
+    trust?: { [characterId: string]: number };
 };
