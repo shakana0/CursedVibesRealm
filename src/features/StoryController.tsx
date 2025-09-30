@@ -3,7 +3,7 @@ import { SceneEngine } from "./engines/SceneEngine";
 import { usePlayerState } from "../hooks/usePlayerState";
 
 export function StoryController() {
-  const [sceneId, setSceneId] = useState("chapter1-bite-corridor");
+  const [sceneId, setSceneId] = useState("bite-corridor");
   const { stats, applyStatImpact } = usePlayerState();
 
   function handleSceneChange(nextSceneId: string) {
