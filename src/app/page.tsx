@@ -20,13 +20,11 @@ export default function LandingPage() {
     };
   }, [showIntro]);
 
-  if (hasEnteredStory) {
-    return <StoryController />;
-  }
-
   return (
-    <main className="h-screen flex flex-col items-center justify-center p-8 sm:p-20 bg-obsidian text-mist">
-      {showIntro ? (
+    <main className="h-screen flex flex-col items-center justify-center p-8 sm:p-10 bg-obsidian text-mist">
+      {hasEnteredStory ? (
+        <StoryController />
+      ) : showIntro ? (
         <IntroSequence onComplete={() => setShowIntro(false)} />
       ) : (
         <MainUI
