@@ -22,6 +22,7 @@ export default function CursedText({
   pulseSpeed = undefined,
   cursedText = false,
   className = "",
+  onClick,
 }: CursedTextProps) {
   const classes = [
     cursedText ? "cursed-text" : "",
@@ -38,5 +39,6 @@ export default function CursedText({
     style,
     "data-text": text,
     children: text,
+    onClick,
   });
 }
