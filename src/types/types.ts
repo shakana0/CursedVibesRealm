@@ -1,30 +1,39 @@
+export interface SceneProps {
+    sceneId: string;
+    sceneType: string,
+    chapter: string;
+    sceneAura: SceneAura;
+    narration: string[];
+    choices: ChoiceProps[];
+    effects: string[];
+}
+
+export type SceneAura = {
+    background: string,
+    ambientAudio?: string,
+    music?: string,
+    sfx?: string[]
+}
+
 export interface ChoiceProps {
     text: string;
     tone: string;
-    statImpact?: PlayerStats;
+    statImpact: StatDelta;
     outcome: string;
     nextScene: string;
 }
 
-export interface SceneProps {
-    sceneId: string;
-    chapter: string;
-    background: string;
-    narration: string[];
-    choices: ChoiceProps[];
-}
-
-export type PlayerStats = {
-    health: number;
-    curseLevel: number;
-    status: string;
-    trust: {
+export type StatDelta = {
+    health?: number;
+    curseLevel?: number;
+    status?: string;
+    emotionalState?: string;
+    desireLevel?: number;
+    corruption?: number;
+    chatTone?: string;
+    trust?: {
         [characterId: string]: number;
     };
-    emotionalState: string;
-    desireLevel: number;
-    corruption: number;
-    chatTone: string;
 };
 
 export type CharacterStats = {
@@ -34,6 +43,6 @@ export type CharacterStats = {
     luck: number;
 };
 
-export type StatImpact = Partial<Omit<PlayerStats, "trust">> & {
+export type StatImpact = Partial<Omit<StatDelta, "trust">> & {
     trust?: { [characterId: string]: number };
 };
