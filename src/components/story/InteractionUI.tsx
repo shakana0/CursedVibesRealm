@@ -16,7 +16,7 @@ export function InteractionUI({ scene, onChoice }: InteractionUIProps) {
       transition={{ duration: 1.2, ease: "easeOut" }}
       className="w-screen h-screen relative flex items-center justify-center px-2"
     >
-      <BackgroundLayer image={scene.background} />
+      <BackgroundLayer image={scene.sceneAura.background} />
       <div className="absolute inset-0 bg-black/40 backdrop-blur-sm z-1" />
 
       <section
