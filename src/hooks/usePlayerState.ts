@@ -1,8 +1,8 @@
 import { useState } from "react"
-import { PlayerStats, StatImpact } from "@/types/types"
+import { StatDelta, StatImpact } from "@/types/types"
 
 export function usePlayerState() {
-    const [stats, setStats] = useState<PlayerStats>({
+    const [stats, setStats] = useState<StatDelta>({
         health: 100,
         curseLevel: 0,
         status: "normal",
@@ -16,7 +16,7 @@ export function usePlayerState() {
         chatTone: "soft"
     })
 
-    function updateStat(stat: keyof PlayerStats, amount: number | string) {
+    function updateStat(stat: keyof StatDelta, amount: number | string) {
         setStats((prev) => ({
             ...prev,
             [stat]: typeof amount === "number"
@@ -29,7 +29,7 @@ export function usePlayerState() {
         const { trust, ...rest } = impact;
 
         Object.entries(rest).forEach(([stat, amount]) => {
-            updateStat(stat as keyof PlayerStats, amount);
+            updateStat(stat as keyof StatDelta, amount);
         });
 
         if (trust) {
@@ -40,15 +40,17 @@ export function usePlayerState() {
     }
 
     function updateTrust(characterId: string, amount: number) {
-        setStats((prev) => ({
-            ...prev,
-            trust: {
-                ...prev.trust,
-                [characterId]: (prev.trust[characterId] || 0) + amount
-            }
-        }))
+        setStats((prev) => {
+            const currentTrust = prev.trust ?? {};
+            return {
+                ...prev,
+                trust: {
+                    ...currentTrust,
+                    [characterId]: (currentTrust[characterId] || 0) + amount
+                }
+            };
+        });
     }
-
 
     return { stats, applyStatImpact, updateTrust }
 }
