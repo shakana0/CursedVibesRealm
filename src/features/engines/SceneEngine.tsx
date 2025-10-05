@@ -1,17 +1,12 @@
 import { useEffect, useState } from "react";
 import { fetchScene } from "@/utils/sceneLoader";
-import {
-  SceneProps,
-  ChoiceProps,
-  StatImpact,
-  PlayerStats,
-} from "@/types/types";
+import { SceneProps, ChoiceProps, StatImpact, StatDelta } from "@/types/types";
 import { SceneIntroUI } from "@/components/story/SceneIntroUI";
 import { InteractionUI } from "@/components/story/InteractionUI";
 
 interface SceneEngineProps {
   sceneId: string;
-  stats: PlayerStats;
+  stats: StatDelta;
   onSceneChange: (sceneId: string) => void;
   applyStatImpact: (statImpact: StatImpact) => void;
 }
@@ -23,7 +18,9 @@ export function SceneEngine({
   applyStatImpact,
 }: SceneEngineProps) {
   const [scene, setScene] = useState<SceneProps | null>(null);
-  const [phase, setPhase] = useState<"intro" | "choice">("intro");
+  const [phase, setPhase] = useState<"intro" | "choice">(
+    scene?.sceneType === "choice" ? "choice" : "intro"
+  );
 
   useEffect(() => {
     fetchScene(sceneId).then(setScene);
