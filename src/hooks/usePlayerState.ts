@@ -41,6 +41,7 @@ export function usePlayerState() {
 
     function updateTrust(characterId: string, amount: number) {
         setStats((prev) => {
+            // Ensure trust is always an object
             const currentTrust = prev.trust ?? {};
             return {
                 ...prev,
